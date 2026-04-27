@@ -1,0 +1,71 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Homepage"
+        name: "homepage"
+        file: "_data/homepage.json"
+        fields:
+          - {label: "Hero Headline", name: "hero_headline", widget: "string", default: "Technology"}
+          - {label: "Hero Subtitle (italic)", name: "hero_subtitle", widget: "string", default: "in its place."}
+          - {label: "Hero Body Text", name: "hero_body", widget: "text", default: "Tools to help you live more fully — offline."}
+          - {label: "YouTube URL", name: "youtube_url", widget: "string", default: "#"}
+          - {label: "Instagram URL", name: "instagram_url", widget: "string", default: "#"}
+
+  - name: "journal"
+    label: "Journal Posts"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Category", name: "category", widget: "select", options: ["Habits", "Science", "Tools", "Philosophy", "Stories"]}
+      - {label: "Excerpt (short summary)", name: "excerpt", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+
+  - name: "app"
+    label: "App Page"
+    files:
+      - label: "One Good Thing App"
+        name: "app"
+        file: "_data/app.json"
+        fields:
+          - {label: "Page Headline", name: "headline", widget: "string", default: "One Good Thing."}
+          - {label: "Page Description", name: "description", widget: "text"}
+          - {label: "App Store Link", name: "appstore_url", widget: "string", default: "#"}
+          - {label: "Google Play Link", name: "playstore_url", widget: "string", default: "#"}
+          - {label: "Launch Status", name: "status", widget: "select", options: ["Coming Soon", "Available Now"], default: "Coming Soon"}
+          - label: "Features"
+            name: "features"
+            widget: "list"
+            fields:
+              - {label: "Icon (emoji)", name: "icon", widget: "string"}
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+
+  - name: "detox"
+    label: "7 Day Detox Page"
+    files:
+      - label: "7 Day Challenge"
+        name: "detox"
+        file: "_data/detox.json"
+        fields:
+          - {label: "Page Headline", name: "headline", widget: "string", default: "7 Days Offline Challenge."}
+          - {label: "Page Description", name: "description", widget: "text"}
+          - label: "The 7 Days"
+            name: "days"
+            widget: "list"
+            fields:
+              - {label: "Day Number", name: "number", widget: "string"}
+              - {label: "Day Title", name: "title", widget: "string"}
+              - {label: "Day Description", name: "description", widget: "text"}
+              - {label: "Day Content (full)", name: "content", widget: "markdown"}
