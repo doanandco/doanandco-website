@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>One Good Thing — Doan & Co</title>
+  <meta name="description" content="A daily gratitude app that helps you end each day with one good thing."/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    /* App page specific */
+    .app-hero{padding:160px 60px 80px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:90vh}
+    .app-hero-text{}
+    .app-hero-visual{display:flex;justify-content:center;align-items:center}
+    /* Phone mockup */
+    .phone-mockup{width:260px;background:var(--bark);border-radius:36px;padding:24px 16px 32px;box-shadow:0 40px 80px rgba(44,36,22,.25);position:relative}
+    .phone-notch{width:80px;height:6px;background:rgba(255,255,255,.15);border-radius:3px;margin:0 auto 20px}
+    .phone-screen{background:var(--warm-white);border-radius:24px;padding:28px 20px;min-height:360px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:20px}
+    .phone-date{font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;opacity:.35;color:var(--bark)}
+    .phone-question{font-size:1.1rem;font-weight:300;line-height:1.5;color:var(--bark);font-style:italic}
+    .phone-input-mock{width:100%;background:var(--linen);border-radius:8px;padding:14px;min-height:80px;margin-top:8px}
+    .phone-btn-mock{background:var(--clay);color:var(--cream);padding:12px 24px;border-radius:4px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;margin-top:8px}
+    /* Screenshot placeholder grid */
+    .screenshots{padding:80px 60px;background:var(--linen)}
+    .screenshots h2{font-size:clamp(2rem,3.5vw,2.8rem);font-weight:300;line-height:1.2;margin-bottom:16px}
+    .screenshots h2 em{font-style:italic;color:var(--clay)}
+    .screenshots-note{font-family:'DM Mono',monospace;font-size:.7rem;opacity:.45;margin-bottom:48px;line-height:1.7}
+    .screenshot-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+    .screenshot-ph{aspect-ratio:9/16;border-radius:16px;overflow:hidden}
+    .screenshot-ph .img-placeholder{width:100%;height:100%;border-radius:16px;min-height:220px}
+    /* Features */
+    .features{padding:100px 60px}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+    .feature{padding:40px 32px;background:var(--linen);position:relative}
+    .feature-icon{font-size:1.8rem;margin-bottom:20px;opacity:.6}
+    .feature h3{font-size:1.5rem;font-weight:300;margin-bottom:12px}
+    .feature h3 em{font-style:italic;color:var(--clay)}
+    .feature p{font-family:'DM Mono',monospace;font-size:.7rem;line-height:1.8;opacity:.5}
+    /* Download CTA */
+    .download-cta{background:var(--bark);padding:100px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .download-cta h2{font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;line-height:1.2;color:var(--cream)}
+    .download-cta h2 em{font-style:italic;color:var(--sage)}
+    .download-cta p{font-family:'DM Mono',monospace;font-size:.72rem;line-height:1.9;color:var(--cream);opacity:.5;margin-top:16px}
+    .store-buttons{display:flex;flex-direction:column;gap:16px}
+    .store-btn{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);padding:16px 24px;text-decoration:none;color:var(--cream);transition:background .3s}
+    .store-btn:hover{background:rgba(255,255,255,.14)}
+    .store-btn-icon{font-size:1.6rem;opacity:.7}
+    .store-btn-text{}
+    .store-btn-label{font-family:'DM Mono',monospace;font-size:.55rem;letter-spacing:.15em;text-transform:uppercase;opacity:.5;display:block}
+    .store-btn-name{font-size:1rem;font-weight:300;display:block}
+    .coming-soon-badge{display:inline-block;background:var(--clay);color:var(--cream);padding:6px 14px;font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;margin-top:12px}
+    @media(max-width:900px){
+      .app-hero{grid-template-columns:1fr;padding:120px 24px 60px;gap:40px}
+      .screenshots{padding:60px 24px}
+      .screenshot-grid{grid-template-columns:repeat(2,1fr)}
+      .features{padding:60px 24px}
+      .features-grid{grid-template-columns:1fr}
+      .download-cta{grid-template-columns:1fr;padding:60px 24px}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo">Doan <span>&</span> Co</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#philosophy">Philosophy</a></li>
+    <li><a href="../index.html#tools">Tools</a></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+    <li><a href="../community/index.html">Community</a></li>
+    <li>
+      <a href="https://youtube.com/@doanandco" target="_blank" rel="noopener" class="social-link ghost" title="YouTube" aria-label="YouTube">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M15.2 1.88A2 2 0 0 0 13.8.45C12.6.1 8 .1 8 .1S3.4.1 2.2.45A2 2 0 0 0 .8 1.88C.45 3.1.45 5.66.45 5.66s0 2.56.35 3.78A2 2 0 0 0 2.2 10.87C3.4 11.22 8 11.22 8 11.22s4.6 0 5.8-.35a2 2 0 0 0 1.4-1.43c.35-1.22.35-3.78.35-3.78s0-2.56-.35-3.78zM6.45 8.11V3.21l3.88 2.45-3.88 2.45z" fill="currentColor"/></svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://instagram.com/doan.and.co" target="_blank" rel="noopener" class="social-link ghost" title="Instagram" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x=".5" y=".5" width="13" height="13" rx="3.5" stroke="currentColor"/><circle cx="7" cy="7" r="3" stroke="currentColor"/><circle cx="10.5" cy="3.5" r=".75" fill="currentColor"/></svg>
+      </a>
+    </li>
+    <li><a href="../index.html#newsletter" class="nav-cta">Join</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="app-hero">
+  <div class="app-hero-text">
+    <a href="../index.html" class="back-link">Back to Home</a>
+    <p class="page-hero-eyebrow" style="opacity:1;animation:none">App · Available Soon</p>
+    <h1 style="font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.08;opacity:1;animation:none">One<br><em style="font-style:italic;color:var(--moss)">Good Thing.</em></h1>
+    <div class="page-hero-divider" style="width:48px"></div>
+    <p class="page-hero-body" style="opacity:1;animation:none">At the end of every day, one question. One answer. That's it. A daily gratitude practice so simple you'll actually keep it.</p>
+    <div class="btn-group">
+      <span class="coming-soon-badge">Launching Soon</span>
+    </div>
+  </div>
+  <div class="app-hero-visual reveal">
+    <div class="phone-mockup">
+      <div class="phone-notch"></div>
+      <div class="phone-screen">
+        <div class="phone-date">Tuesday · Dec 17</div>
+        <p class="phone-question">"What was one good thing that happened today?"</p>
+        <div class="phone-input-mock"></div>
+        <div class="phone-btn-mock">Save Today's Moment</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section class="screenshots">
+  <div class="reveal">
+    <p class="section-label">App Preview</p>
+    <h2>Screenshots<br><em>coming soon.</em></h2>
+    <p class="screenshots-note">We're putting the finishing touches on One Good Thing.<br>Add your email below to be the first to know when it launches.</p>
+    <a href="../index.html#newsletter" class="btn-primary">Get Launch Notification</a>
+  </div>
+  <div class="screenshot-grid" style="margin-top:48px">
+    <div class="screenshot-ph reveal">
+      <div class="img-placeholder">
+        <div class="ph-icon">📱</div>
+        <div class="ph-text">Daily Question Screen</div>
+      </div>
+    </div>
+    <div class="screenshot-ph reveal">
+      <div class="img-placeholder">
+        <div class="ph-icon">📓</div>
+        <div class="ph-text">Journal History</div>
+      </div>
+    </div>
+    <div class="screenshot-ph reveal">
+      <div class="img-placeholder">
+        <div class="ph-icon">🌿</div>
+        <div class="ph-text">Monthly Review</div>
+      </div>
+    </div>
+    <div class="screenshot-ph reveal">
+      <div class="img-placeholder">
+        <div class="ph-icon">✨</div>
+        <div class="ph-text">Share Card</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="reveal">
+    <p class="section-label">How It Works</p>
+    <h2 class="section-title">Designed to be<br><em>actually used.</em></h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature reveal">
+      <div class="feature-icon">🌅</div>
+      <h3>One <em>question</em> daily</h3>
+      <p>A single thoughtful prompt every evening. No streaks to maintain. No pressure. Just one moment to reflect.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">📷</div>
+      <h3>Words <em>or</em> photos</h3>
+      <p>Write a few words, add a photo, or both. Your good things are saved privately on your device — no cloud, no data collection.</p>
+    </div>
+    <div class="feature reveal">
+      <div class="feature-icon">📅</div>
+      <h3>Month <em>in review</em></h3>
+      <p>At the end of each month, a beautiful visual card of everything good that happened. Share it or keep it for yourself.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="download-cta">
+  <div class="reveal-left">
+    <h2>Available on<br><em>iOS & Android</em><br>— coming soon.</h2>
+    <p>We're in final development. Join the list and you'll be notified the moment it's live — including a free launch week unlock.</p>
+  </div>
+  <div class="store-buttons reveal">
+    <a href="../index.html#newsletter" class="store-btn">
+      <span class="store-btn-icon">🍎</span>
+      <span class="store-btn-text">
+        <span class="store-btn-label">Coming soon to</span>
+        <span class="store-btn-name">App Store</span>
+      </span>
+    </a>
+    <a href="../index.html#newsletter" class="store-btn">
+      <span class="store-btn-icon">▶</span>
+      <span class="store-btn-text">
+        <span class="store-btn-label">Coming soon to</span>
+        <span class="store-btn-name">Google Play</span>
+      </span>
+    </a>
+    <p style="font-family:'DM Mono',monospace;font-size:.62rem;opacity:.35;margin-top:8px;color:var(--cream)">Notify me when it launches →<br><a href="../index.html#newsletter" style="color:var(--clay);text-decoration:none">Join the list</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Doan <span>&</span> Co</span>
+      <p>Building tools for people who want to live more fully — offline.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="index.html">One Good Thing</a></li>
+        <li><a href="../detox/index.html">7 Day Detox</a></li>
+        <li><a href="../journal/index.html">Journal</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="https://youtube.com/@doanandco" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/doan.and.co" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Doan & Co. All rights reserved.</span>
+    <span class="footer-tagline">Live beyond the screen.</span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js">
+  /* ── FORM HANDLERS ── */
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('newsletterBtn');
+    const note = document.getElementById('newsletterNote');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        btn.textContent = '✓ Joined';
+        note.textContent = 'You're in! See you Sunday.';
+        note.style.color = 'var(--clay)';
+      })
+      .catch(() => {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      });
+  }
+  function handleFormSubmit(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById(type + 'Btn');
+    const note = document.getElementById(type + 'Note');
+    if(btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        if(btn) btn.textContent = '✓ Done';
+        if(note) note.style.opacity = '1';
+      })
+      .catch(() => {
+        if(btn) { btn.textContent = 'Try again'; btn.disabled = false; }
+      });
+  }
+</script>
+</body>
+</html>

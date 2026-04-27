@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Journal — Doan & Co</title>
+  <meta name="description" content="Essays on living well in a distracted world."/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .journal-hero{padding:160px 60px 80px}
+    .posts-section{padding:40px 60px 100px}
+    .posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+    .post-card{background:var(--warm-white);padding:0;text-decoration:none;color:var(--bark);display:block;transition:transform .3s;overflow:hidden}
+    .post-card:hover{transform:translateY(-4px)}
+    .post-img{width:100%;aspect-ratio:3/2;overflow:hidden}
+    .post-img .img-placeholder{width:100%;height:100%;min-height:200px}
+    .post-body{padding:28px 28px 36px}
+    .post-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:12px}
+    .post-title{font-size:1.4rem;font-weight:300;line-height:1.3;margin-bottom:10px}
+    .post-title em{font-style:italic}
+    .post-excerpt{font-family:'DM Mono',monospace;font-size:.68rem;line-height:1.8;opacity:.5}
+    .post-date{font-family:'DM Mono',monospace;font-size:.58rem;opacity:.3;margin-top:16px;letter-spacing:.08em}
+    /* Featured post */
+    .featured-post{background:var(--bark);color:var(--cream);padding:60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:2px;text-decoration:none;transition:opacity .3s}
+    .featured-post:hover{opacity:.92}
+    .featured-tag{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:16px}
+    .featured-title{font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;line-height:1.2;color:var(--cream);margin-bottom:16px}
+    .featured-title em{font-style:italic;color:var(--sage)}
+    .featured-excerpt{font-family:'DM Mono',monospace;font-size:.72rem;line-height:1.9;color:var(--cream);opacity:.5}
+    .featured-meta{font-family:'DM Mono',monospace;font-size:.6rem;opacity:.3;margin-top:20px;color:var(--cream)}
+    .featured-img .img-placeholder{min-height:300px;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.1)}
+    .featured-img .ph-text,.featured-img .ph-icon{color:var(--cream)}
+    /* Newsletter strip */
+    .journal-newsletter{background:var(--cream);padding:64px 60px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+    .journal-newsletter h3{font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;line-height:1.2}
+    .journal-newsletter h3 em{font-style:italic;color:var(--clay)}
+    .journal-newsletter p{font-family:'DM Mono',monospace;font-size:.7rem;line-height:1.9;opacity:.45;margin-top:12px}
+    .jn-form{display:flex;gap:0}
+    .jn-input{flex:1;padding:16px 20px;background:var(--warm-white);border:1px solid var(--linen);font-family:'DM Mono',monospace;font-size:.7rem;color:var(--bark);outline:none;transition:border-color .3s}
+    .jn-input::placeholder{opacity:.35}
+    .jn-input:focus{border-color:var(--clay)}
+    .jn-btn{background:var(--clay);color:var(--cream);border:none;padding:16px 24px;font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;cursor:none;transition:background .3s}
+    .jn-btn:hover{background:var(--bark)}
+    @media(max-width:900px){
+      .journal-hero{padding:120px 24px 60px}
+      .posts-section{padding:24px 24px 80px}
+      .posts-grid{grid-template-columns:1fr}
+      .featured-post{grid-template-columns:1fr;padding:40px 24px}
+      .journal-newsletter{grid-template-columns:1fr;padding:48px 24px}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo">Doan <span>&</span> Co</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#philosophy">Philosophy</a></li>
+    <li><a href="../index.html#tools">Tools</a></li>
+    <li><a href="index.html">Journal</a></li>
+    <li><a href="../community/index.html">Community</a></li>
+    <li>
+      <a href="https://youtube.com/@doanandco" target="_blank" rel="noopener" class="social-link ghost" title="YouTube" aria-label="YouTube">
+        <svg width="16" height="12" viewBox="0 0 16 12" fill="none"><path d="M15.2 1.88A2 2 0 0 0 13.8.45C12.6.1 8 .1 8 .1S3.4.1 2.2.45A2 2 0 0 0 .8 1.88C.45 3.1.45 5.66.45 5.66s0 2.56.35 3.78A2 2 0 0 0 2.2 10.87C3.4 11.22 8 11.22 8 11.22s4.6 0 5.8-.35a2 2 0 0 0 1.4-1.43c.35-1.22.35-3.78.35-3.78s0-2.56-.35-3.78zM6.45 8.11V3.21l3.88 2.45-3.88 2.45z" fill="currentColor"/></svg>
+      </a>
+    </li>
+    <li>
+      <a href="https://instagram.com/doan.and.co" target="_blank" rel="noopener" class="social-link ghost" title="Instagram" aria-label="Instagram">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x=".5" y=".5" width="13" height="13" rx="3.5" stroke="currentColor"/><circle cx="7" cy="7" r="3" stroke="currentColor"/><circle cx="10.5" cy="3.5" r=".75" fill="currentColor"/></svg>
+      </a>
+    </li>
+    <li><a href="../index.html#newsletter" class="nav-cta">Join</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="journal-hero">
+  <a href="../index.html" class="back-link">Back to Home</a>
+  <p class="page-hero-eyebrow" style="opacity:1;animation:none">Essays · Published Bi-Weekly</p>
+  <h1 style="font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.08;opacity:1;animation:none">The Doan <em style="font-style:italic;color:var(--moss)">&amp; Co</em><br>Journal.</h1>
+  <div style="width:48px;height:1px;background:var(--clay);margin:28px 0"></div>
+  <p style="font-size:1.15rem;font-weight:300;line-height:1.8;max-width:500px;opacity:.8">Practical, honest essays on living well in a distracted world. Never preachy. Always useful.</p>
+</section>
+
+<!-- POSTS -->
+<section class="posts-section">
+
+  <!-- Featured (placeholder — add your first real post here) -->
+  <a href="#" class="featured-post reveal">
+    <div>
+      <div class="featured-tag">Featured · Add Your Post Here</div>
+      <h2 class="featured-title">Why Your Phone Is <em>Designed</em><br>To Keep You On It</h2>
+      <p class="featured-excerpt">The attention economy isn't an accident — it's an engineering project. Understanding how it works is the first step to opting out of it. Here's what's actually happening when you can't put your phone down.</p>
+      <div class="featured-meta">Coming Soon · Doan & Co</div>
+    </div>
+    <div class="featured-img">
+      <div class="img-placeholder" style="min-height:280px">
+        <div class="ph-icon" style="color:rgba(255,255,255,.3);font-size:2rem">📷</div>
+        <div class="ph-text" style="color:rgba(255,255,255,.3)">Add your featured image here</div>
+      </div>
+    </div>
+  </a>
+
+  <!-- Post grid (placeholders) -->
+  <div class="posts-grid">
+    <a href="#" class="post-card reveal">
+      <div class="post-img"><div class="img-placeholder"><div class="ph-icon">📷</div><div class="ph-text">Add post image</div></div></div>
+      <div class="post-body">
+        <div class="post-tag">Habits</div>
+        <h3 class="post-title">The <em>5 Minute</em> Phone-Free Morning</h3>
+        <p class="post-excerpt">You don't need a 2-hour routine. You need five minutes and a decision.</p>
+        <div class="post-date">Add your post date here</div>
+      </div>
+    </a>
+    <a href="#" class="post-card reveal">
+      <div class="post-img"><div class="img-placeholder"><div class="ph-icon">📷</div><div class="ph-text">Add post image</div></div></div>
+      <div class="post-body">
+        <div class="post-tag">Science</div>
+        <h3 class="post-title">What <em>Boredom</em> Actually Does to Your Brain</h3>
+        <p class="post-excerpt">The research on mind-wandering is genuinely surprising — and it argues for less stimulation, not more.</p>
+        <div class="post-date">Add your post date here</div>
+      </div>
+    </a>
+    <a href="#" class="post-card reveal">
+      <div class="post-img"><div class="img-placeholder"><div class="ph-icon">📷</div><div class="ph-text">Add post image</div></div></div>
+      <div class="post-body">
+        <div class="post-tag">Tools</div>
+        <h3 class="post-title">The Analog <em>Setup</em> That Changed Everything</h3>
+        <p class="post-excerpt">A simple notebook system for people who keep starting digital productivity apps and quitting.</p>
+        <div class="post-date">Add your post date here</div>
+      </div>
+    </a>
+  </div>
+
+  <!-- Add more posts note -->
+  <div style="padding:48px 0;text-align:center;border-top:1px solid var(--linen);margin-top:2px">
+    <p style="font-family:'DM Mono',monospace;font-size:.7rem;opacity:.35;letter-spacing:.08em">More posts coming — add them through your admin panel at <strong style="opacity:.6">/admin</strong></p>
+  </div>
+</section>
+
+<!-- NEWSLETTER STRIP -->
+<section class="journal-newsletter">
+  <div class="reveal-left">
+    <p class="section-label">Never Miss an Essay</p>
+    <h3>Every Sunday.<br><em>One good read.</em></h3>
+    <p>The Doan & Co letter — short essays on intentional living delivered to your inbox weekly.</p>
+  </div>
+  <div class="reveal">
+    <form name="journal-newsletter" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event,'journal')" style="display:contents">
+      <input type="hidden" name="form-name" value="journal-newsletter"/>
+      <div class="jn-form">
+        <input type="email" name="email" class="jn-input" placeholder="your@email.com" required/>
+        <button type="submit" class="jn-btn" id="journalBtn">Subscribe</button>
+      </div>
+    </form>
+    <p id="journalNote" style="font-family:'DM Mono',monospace;font-size:.6rem;opacity:0;margin-top:10px;transition:opacity .5s">&#10003; You're in! See you Sunday.</p>
+    <p style="font-family:'DM Mono',monospace;font-size:.6rem;opacity:.3;margin-top:10px">No spam. Unsubscribe any time.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Doan <span>&</span> Co</span>
+      <p>Building tools for people who want to live more fully — offline.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="../app/index.html">One Good Thing</a></li>
+        <li><a href="../detox/index.html">7 Day Detox</a></li>
+        <li><a href="index.html">Journal</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="https://youtube.com/@doanandco" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/doan.and.co" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Doan & Co. All rights reserved.</span>
+    <span class="footer-tagline">Live beyond the screen.</span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js">
+  /* ── FORM HANDLERS ── */
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('newsletterBtn');
+    const note = document.getElementById('newsletterNote');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        btn.textContent = '✓ Joined';
+        note.textContent = 'You're in! See you Sunday.';
+        note.style.color = 'var(--clay)';
+      })
+      .catch(() => {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      });
+  }
+  function handleFormSubmit(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById(type + 'Btn');
+    const note = document.getElementById(type + 'Note');
+    if(btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        if(btn) btn.textContent = '✓ Done';
+        if(note) note.style.opacity = '1';
+      })
+      .catch(() => {
+        if(btn) { btn.textContent = 'Try again'; btn.disabled = false; }
+      });
+  }
+</script>
+</body>
+</html>

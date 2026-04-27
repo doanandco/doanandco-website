@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>7 Day Offline Challenge — Doan & Co</title>
+  <meta name="description" content="A free 7-day guide to reclaiming your time from screens."/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <style>
+    .detox-hero{padding:160px 60px 100px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .detox-hero-num{font-size:clamp(6rem,14vw,12rem);font-weight:300;line-height:1;color:var(--linen);position:absolute;right:60px;top:120px;pointer-events:none}
+    .days-section{padding:100px 60px;background:var(--linen)}
+    .days-grid{display:grid;grid-template-columns:1fr;gap:2px;margin-top:60px}
+    .day-card{background:var(--warm-white);padding:40px 44px;display:grid;grid-template-columns:80px 1fr;gap:32px;align-items:start;transition:background .3s}
+    .day-card:hover{background:var(--cream)}
+    .day-num-big{font-size:2.8rem;font-weight:300;color:var(--clay);line-height:1}
+    .day-label{font-family:'DM Mono',monospace;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;opacity:.4;margin-bottom:6px}
+    .day-title{font-size:1.5rem;font-weight:300;margin-bottom:10px}
+    .day-title em{font-style:italic;color:var(--moss)}
+    .day-desc{font-family:'DM Mono',monospace;font-size:.72rem;line-height:1.8;opacity:.5}
+    .day-ph{background:var(--linen);border:1px dashed rgba(44,36,22,.15);padding:16px;margin-top:12px;font-family:'DM Mono',monospace;font-size:.6rem;opacity:.35;border-radius:4px}
+    /* What you get */
+    .what-you-get{padding:100px 60px}
+    .wyg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;margin-top:56px}
+    .wyg-item{padding:36px;background:var(--linen)}
+    .wyg-item h3{font-size:1.4rem;font-weight:300;margin-bottom:10px}
+    .wyg-item h3 em{font-style:italic;color:var(--clay)}
+    .wyg-item p{font-family:'DM Mono',monospace;font-size:.7rem;line-height:1.8;opacity:.5}
+    /* Download CTA */
+    .detox-cta{background:var(--moss);padding:100px 60px;text-align:center}
+    .detox-cta h2{font-size:clamp(2.5rem,5vw,4rem);font-weight:300;line-height:1.1;color:var(--cream);margin-bottom:20px}
+    .detox-cta h2 em{font-style:italic;color:var(--sage)}
+    .detox-cta p{font-family:'DM Mono',monospace;font-size:.72rem;line-height:1.9;color:var(--cream);opacity:.5;max-width:500px;margin:0 auto 40px}
+    .email-capture{display:flex;gap:0;max-width:480px;margin:0 auto}
+    .email-input{flex:1;padding:17px 22px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-family:'DM Mono',monospace;font-size:.72rem;color:var(--cream);outline:none}
+    .email-input::placeholder{opacity:.4;color:var(--cream)}
+    .email-btn{background:var(--clay);color:var(--cream);border:none;padding:17px 26px;font-family:'DM Mono',monospace;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;cursor:none;transition:background .3s;white-space:nowrap}
+    .email-btn:hover{background:var(--bark)}
+    .cta-note{font-family:'DM Mono',monospace;font-size:.6rem;color:var(--cream);opacity:.3;margin-top:14px}
+    @media(max-width:900px){
+      .detox-hero{grid-template-columns:1fr;padding:120px 24px 60px}
+      .detox-hero-num{display:none}
+      .days-section{padding:60px 24px}
+      .day-card{grid-template-columns:50px 1fr;gap:20px;padding:28px 24px}
+      .what-you-get{padding:60px 24px}
+      .wyg-grid{grid-template-columns:1fr}
+      .detox-cta{padding:60px 24px}
+      .email-capture{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<nav id="mainNav">
+  <a href="../index.html" class="nav-logo">Doan <span>&</span> Co</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html#philosophy">Philosophy</a></li>
+    <li><a href="../index.html#tools">Tools</a></li>
+    <li><a href="../journal/index.html">Journal</a></li>
+    <li><a href="../community/index.html">Community</a></li>
+    <li><a href="#download" class="nav-cta">Get Free Guide</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="detox-hero" style="position:relative">
+  <div>
+    <a href="../index.html" class="back-link">Back to Home</a>
+    <p style="font-family:'DM Mono',monospace;font-size:.65rem;letter-spacing:.3em;text-transform:uppercase;color:var(--clay);margin-bottom:24px">Guide · Free Download</p>
+    <h1 style="font-size:clamp(3rem,6vw,5rem);font-weight:300;line-height:1.08"><em style="font-style:italic;color:var(--moss)">7 Days</em><br>Offline Challenge.</h1>
+    <div style="width:48px;height:1px;background:var(--clay);margin:32px 0"></div>
+    <p style="font-size:1.2rem;font-weight:300;line-height:1.8;max-width:480px">A structured, day-by-day guide to reclaiming your mornings, evenings, and weekends from the feed. Free. No app required. Just you, some intention, and seven days.</p>
+    <div class="btn-group">
+      <a href="#download" class="btn-clay">Download Free Guide</a>
+      <a href="#days" class="btn-secondary">See What's Inside</a>
+    </div>
+  </div>
+  <div class="reveal" style="display:flex;align-items:center;justify-content:center">
+    <div style="background:var(--linen);padding:48px;max-width:340px;width:100%">
+      <div style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--clay);margin-bottom:20px">Inside the guide</div>
+      <ul style="list-style:none;display:flex;flex-direction:column;gap:12px">
+        <li style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.6;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--clay)">01</span> A daily intention prompt</li>
+        <li style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.6;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--clay)">02</span> One concrete offline action</li>
+        <li style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.6;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--clay)">03</span> An evening reflection question</li>
+        <li style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.6;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--clay)">04</span> Science behind each day's focus</li>
+        <li style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.6;display:flex;gap:12px;align-items:flex-start"><span style="color:var(--clay)">05</span> Printable journal pages</li>
+      </ul>
+    </div>
+  </div>
+  <div class="detox-hero-num">7</div>
+</section>
+
+<!-- DAYS -->
+<section class="days-section" id="days">
+  <div class="reveal">
+    <p class="section-label">The 7 Days</p>
+    <h2 class="section-title">One focus.<br><em>Every day.</em></h2>
+    <p style="font-family:'DM Mono',monospace;font-size:.72rem;opacity:.45;max-width:500px;line-height:1.8;margin-top:8px">Full content for each day will be added here. The structure below shows how each day is organized.</p>
+  </div>
+  <div class="days-grid">
+    <div class="day-card reveal">
+      <div><div class="day-num-big">1</div></div>
+      <div>
+        <div class="day-label">Day One</div>
+        <h3 class="day-title">The <em>Morning</em> Reset</h3>
+        <p class="day-desc">Start the week by reclaiming your first hour. No phone until you've done one real-world thing.</p>
+        <div class="day-ph">📝 Add your Day 1 content here — tips, inspiration, the science behind phone-free mornings.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">2</div></div>
+      <div>
+        <div class="day-label">Day Two</div>
+        <h3 class="day-title">The <em>Meal</em> Presence</h3>
+        <p class="day-desc">Every meal today — phone face-down. Notice what changes when you actually taste your food.</p>
+        <div class="day-ph">📝 Add your Day 2 content here.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">3</div></div>
+      <div>
+        <div class="day-label">Day Three</div>
+        <h3 class="day-title">The <em>Walk</em> Without</h3>
+        <p class="day-desc">A 20-minute walk with no headphones, no podcast, no phone. Just you and whatever's around you.</p>
+        <div class="day-ph">📝 Add your Day 3 content here.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">4</div></div>
+      <div>
+        <div class="day-label">Day Four</div>
+        <h3 class="day-title">The <em>Notification</em> Audit</h3>
+        <p class="day-desc">Turn off every notification that doesn't require an immediate response. Most don't.</p>
+        <div class="day-ph">📝 Add your Day 4 content here.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">5</div></div>
+      <div>
+        <div class="day-label">Day Five</div>
+        <h3 class="day-title">The <em>Analog</em> Hour</h3>
+        <p class="day-desc">One hour doing something with your hands — cooking, writing, drawing, building. Anything that isn't a screen.</p>
+        <div class="day-ph">📝 Add your Day 5 content here.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">6</div></div>
+      <div>
+        <div class="day-label">Day Six</div>
+        <h3 class="day-title">The <em>Connection</em> Shift</h3>
+        <p class="day-desc">Reach out to one person today — but not by text. Call them, write them a letter, or show up in person.</p>
+        <div class="day-ph">📝 Add your Day 6 content here.</div>
+      </div>
+    </div>
+    <div class="day-card reveal">
+      <div><div class="day-num-big">7</div></div>
+      <div>
+        <div class="day-label">Day Seven</div>
+        <h3 class="day-title">The <em>Design</em> Your Life Day</h3>
+        <p class="day-desc">Take everything you've learned this week and decide what you want your actual relationship with technology to look like going forward.</p>
+        <div class="day-ph">📝 Add your Day 7 content here.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT YOU GET -->
+<section class="what-you-get">
+  <div class="reveal">
+    <p class="section-label">What's Included</p>
+    <h2 class="section-title">Everything you need.<br><em>Nothing you don't.</em></h2>
+  </div>
+  <div class="wyg-grid">
+    <div class="wyg-item reveal">
+      <h3>Printable <em>PDF</em></h3>
+      <p>A beautifully designed booklet you can print and use offline. Because it would be ironic to do this challenge on your phone.</p>
+    </div>
+    <div class="wyg-item reveal">
+      <h3>Daily <em>prompts</em></h3>
+      <p>Morning intention + evening reflection for each of the 7 days. Short enough to actually do, meaningful enough to matter.</p>
+    </div>
+    <div class="wyg-item reveal">
+      <h3>The <em>science</em></h3>
+      <p>A brief explanation of why each day's focus works, backed by research on attention, habit formation, and digital wellness.</p>
+    </div>
+    <div class="wyg-item reveal">
+      <h3>Week <em>two</em> plan</h3>
+      <p>What to do after the 7 days are up. How to build on the momentum without going back to old habits.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD CTA -->
+<section class="detox-cta" id="download">
+  <h2 class="reveal">Get your free<br><em>guide now.</em></h2>
+  <p class="reveal">Enter your email and we'll send the guide straight to you. You'll also get our weekly Sunday letter — unsubscribe any time.</p>
+  <form name="detox-guide" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleFormSubmit(event,'detox')" style="display:contents">
+    <input type="hidden" name="form-name" value="detox-guide"/>
+    <div class="email-capture reveal">
+      <input type="email" name="email" class="email-input" placeholder="your@email.com" required/>
+      <button type="submit" class="email-btn" id="detoxBtn">Send My Guide</button>
+    </div>
+  </form>
+  <p id="detoxNote" style="font-family:'DM Mono',monospace;font-size:.6rem;color:var(--cream);opacity:0;margin-top:14px;transition:opacity .5s">&#10003; Check your inbox — guide is on its way!</p>
+  <p class="cta-note reveal">Free. No spam. Unsubscribe any time.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <span class="logo">Doan <span>&</span> Co</span>
+      <p>Building tools for people who want to live more fully — offline.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="../app/index.html">One Good Thing</a></li>
+        <li><a href="index.html">7 Day Detox</a></li>
+        <li><a href="../journal/index.html">Journal</a></li>
+        <li><a href="../community/index.html">Community</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Follow</h4>
+      <ul>
+        <li><a href="https://youtube.com/@doanandco" target="_blank" rel="noopener">YouTube</a></li>
+        <li><a href="https://instagram.com/doan.and.co" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Doan & Co. All rights reserved.</span>
+    <span class="footer-tagline">Live beyond the screen.</span>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js">
+  /* ── FORM HANDLERS ── */
+  function handleNewsletterSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById('newsletterBtn');
+    const note = document.getElementById('newsletterNote');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        btn.textContent = '✓ Joined';
+        note.textContent = 'You're in! See you Sunday.';
+        note.style.color = 'var(--clay)';
+      })
+      .catch(() => {
+        btn.textContent = 'Try again';
+        btn.disabled = false;
+      });
+  }
+  function handleFormSubmit(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const btn = document.getElementById(type + 'Btn');
+    const note = document.getElementById(type + 'Note');
+    if(btn) { btn.textContent = 'Sending...'; btn.disabled = true; }
+    fetch('/', { method: 'POST', headers: {'Content-Type':'application/x-www-form-urlencoded'},
+      body: new URLSearchParams(new FormData(form)).toString() })
+      .then(() => {
+        if(btn) btn.textContent = '✓ Done';
+        if(note) note.style.opacity = '1';
+      })
+      .catch(() => {
+        if(btn) { btn.textContent = 'Try again'; btn.disabled = false; }
+      });
+  }
+</script>
+</body>
+</html>
