@@ -1,0 +1,316 @@
+# DOAN & CO — Complete Setup Guide
+## From Zero to Live Website (Beginner Friendly)
+### Estimated time: 45–60 minutes total
+
+---
+
+## WHAT YOU HAVE
+
+Inside this ZIP file you'll find a folder called "doanandco" with everything 
+your website needs. Here's what's inside:
+
+  doanandco/
+  ├── index.html          ← Your homepage
+  ├── app/index.html      ← One Good Thing app page
+  ├── detox/index.html    ← 7 Day Challenge page
+  ├── journal/index.html  ← Blog page
+  ├── community/index.html ← Community page
+  ├── admin/              ← Your editing dashboard (the CMS)
+  ├── assets/             ← Styles, scripts, images
+  └── netlify.toml        ← Netlify configuration
+
+---
+
+## STEP 1: SIGN UP FOR GITHUB (Free — 5 minutes)
+  
+GitHub is where your website files live in the cloud. It's like Google Drive 
+but for websites.
+
+1. Go to: https://github.com
+2. Click "Sign up" (top right)
+3. Enter your email, create a password, choose a username
+   (suggestion: something like "doanandco" or your name)
+4. Verify your email address
+5. You're in — GitHub is free and you'll stay on the free plan
+
+---
+
+## STEP 2: CREATE A REPOSITORY (5 minutes)
+
+A "repository" (or "repo") is just a folder for your project on GitHub.
+
+1. Once logged into GitHub, click the green "New" button 
+   (or go to github.com/new)
+2. Name it: doanandco-website
+3. Make sure "Public" is selected
+4. Check the box: "Add a README file"
+5. Click "Create repository"
+
+You now have an empty project folder on GitHub.
+
+---
+
+## STEP 3: UPLOAD YOUR FILES TO GITHUB (10 minutes)
+
+1. You're now looking at your new repository page
+2. Click the "Add file" button → choose "Upload files"
+3. Open your computer's file browser and find the "doanandco" folder 
+   you downloaded
+4. Select ALL the files and folders inside "doanandco" 
+   (not the folder itself — select what's inside it)
+
+   TIP: Press Ctrl+A (Windows) or Cmd+A (Mac) to select everything
+
+5. Drag them all into the GitHub upload area
+6. Wait for them all to upload (you'll see progress bars)
+7. Scroll down, type a message like "first upload" in the box
+8. Click "Commit changes"
+
+All your files are now on GitHub.
+
+---
+
+## STEP 4: SIGN UP FOR NETLIFY (Free — 5 minutes)
+
+Netlify is the service that takes your files from GitHub and turns them 
+into a real website on the internet.
+
+1. Go to: https://netlify.com
+2. Click "Sign up"
+3. IMPORTANT: Choose "Sign up with GitHub" — this connects them together
+4. Authorize Netlify to access your GitHub (click "Authorize")
+5. You're now in Netlify's dashboard
+
+---
+
+## STEP 5: DEPLOY YOUR SITE (5 minutes)
+
+This is the magic step — one click and your site goes live.
+
+1. In Netlify, click "Add new site" → "Import an existing project"
+2. Click "GitHub"
+3. Find and click "doanandco-website" (the repo you just created)
+4. Leave all settings as-is (defaults are correct)
+5. Click "Deploy site"
+
+Netlify will show a spinning loading animation for about 30–60 seconds.
+
+When it's done, you'll see a green "Published" status and a weird URL like:
+  https://random-words-123456.netlify.app
+
+THAT'S YOUR WEBSITE! Click the link — it's live.
+
+---
+
+## STEP 6: ENABLE YOUR ADMIN LOGIN (5 minutes)
+
+Before you can edit your site, you need to turn on the login system.
+
+1. In Netlify, click "Site settings" (in the top menu)
+2. In the left sidebar, scroll down to find "Identity"
+3. Click "Enable Identity"
+4. Scroll down to "Registration" — change it to "Invite only" 
+   (this means only you can log in)
+5. Scroll further to "Git Gateway" — click "Enable Git Gateway"
+
+Now invite yourself:
+6. Go back to "Identity" in the sidebar
+7. Click "Invite users"
+8. Enter your own email address
+9. Click "Send"
+10. Check your email — you'll get an invite link
+11. Click the link and set your password for the admin panel
+
+You can now log into your CMS at:
+  https://your-site-name.netlify.app/admin
+
+---
+
+## STEP 7: CONNECT YOUR DOMAIN (15 minutes)
+
+This changes your URL from the random one to doanandco.com.
+
+PART A — Tell Netlify your domain:
+1. In Netlify, click "Domain settings"
+2. Click "Add a domain"
+3. Type: doanandco.com
+4. Click "Verify" then "Add domain"
+5. Netlify will give you two "nameserver" addresses that look like:
+     dns1.p01.nsone.net
+     dns2.p01.nsone.net
+   (Copy these — you'll need them in a moment)
+
+PART B — Point your domain to Netlify:
+(These steps depend on WHERE you bought your domain. Common options below.)
+
+  IF YOUR DOMAIN IS FROM GODADDY:
+  1. Log into GoDaddy
+  2. Click your name (top right) → "My Products"
+  3. Find doanandco.com → click "DNS"
+  4. Scroll to "Nameservers" → click "Change"
+  5. Select "Custom" nameservers
+  6. Delete the existing ones and enter Netlify's nameservers
+  7. Click "Save"
+
+  IF YOUR DOMAIN IS FROM NAMECHEAP:
+  1. Log into Namecheap
+  2. Click "Domain List" → click "Manage" next to doanandco.com
+  3. Find "Nameservers" → choose "Custom DNS"
+  4. Enter Netlify's nameservers
+  5. Click the checkmark to save
+
+  IF YOUR DOMAIN IS FROM SQUARESPACE DOMAINS:
+  1. Log into Squarespace
+  2. Go to Domains → click doanandco.com
+  3. Click "DNS Settings"
+  4. Find Nameservers → click "Use custom nameservers"
+  5. Enter Netlify's nameservers
+
+WAITING: After saving nameservers, it can take anywhere from 10 minutes to 
+48 hours for the change to take effect across the internet. This is normal.
+Your site at the random netlify.app URL still works in the meantime.
+
+---
+
+## STEP 8: HOW TO EDIT YOUR WEBSITE
+
+Once your admin is set up, editing is easy.
+
+1. Go to: https://doanandco.com/admin
+   (or your netlify.app URL while waiting for domain)
+2. Log in with your email and password
+3. You'll see a dashboard with sections:
+   - Site Settings → Edit homepage text, social media links
+   - Journal Posts → Write and publish new blog posts
+   - App Page → Update app info, add App Store links when ready
+   - 7 Day Detox Page → Add content to each day
+   - Community Page → Update waitlist info
+
+TO EDIT TEXT:
+1. Click the section you want to edit
+2. Change the text directly — it works like a Word document
+3. Click "Publish" or "Save" when done
+4. Your website updates automatically within 1–2 minutes
+
+TO ADD IMAGES:
+1. When editing any page, look for "image" fields
+2. Click "Choose an image" or the upload button
+3. Upload from your computer (JPG or PNG files work best)
+4. The image appears on your site after saving
+
+TO WRITE A BLOG POST:
+1. Click "Journal Posts" in the admin sidebar
+2. Click "New Journal Post"
+3. Fill in: Title, Date, Category, Excerpt, and Body text
+4. Upload a featured image if you have one
+5. Click "Publish"
+6. The post appears on your journal page immediately
+
+---
+
+## STEP 9: REPLACING PLACEHOLDER IMAGES
+
+Your site currently has gray placeholder boxes where photos should go.
+Here's how to replace them:
+
+For FREE professional photos, use:
+  https://unsplash.com — search terms like:
+  - "morning coffee journal" 
+  - "forest path nature"
+  - "person reading book"
+  - "sunrise landscape"
+  - "friends outdoors"
+
+1. Download the photo (click the down arrow on Unsplash)
+2. Log into your admin at /admin
+3. Click the page you want to update
+4. Find the image field and upload your downloaded photo
+5. Save
+
+ALTERNATIVELY — for pages like the app page and detox page that have 
+placeholder boxes in the HTML, you can replace them by:
+1. In GitHub, navigate to the file (e.g., app/index.html)
+2. Click the pencil icon to edit
+3. Find the placeholder div and replace with an <img> tag
+4. Commit the change
+
+(If this feels too technical, a Fiverr developer can do this in 30 minutes 
+for a very small fee)
+
+---
+
+## STEP 10: ADDING EMAIL SIGNUPS THAT ACTUALLY WORK
+
+The newsletter forms on your site currently don't send emails anywhere.
+To make them work, use Mailchimp (free up to 500 subscribers):
+
+1. Sign up at: https://mailchimp.com (free plan)
+2. Create an "Audience" (your email list)
+3. Create a form and get the embed code or form action URL
+4. In each of your HTML files, update the form action to your Mailchimp URL
+
+For a non-technical solution: 
+Use Netlify Forms (already partially set up). Just add this to your 
+form tags: netlify data-netlify="true"
+
+Netlify will capture form submissions and email them to you — visible 
+in your Netlify dashboard under "Forms".
+
+---
+
+## QUICK REFERENCE — IMPORTANT URLS
+
+Once live, bookmark these:
+
+  Your website:       https://doanandco.com
+  Your admin panel:   https://doanandco.com/admin
+  Your GitHub:        https://github.com/YOUR-USERNAME/doanandco-website
+  Your Netlify:       https://app.netlify.com
+
+---
+
+## TROUBLESHOOTING
+
+"My site shows a 404 error"
+→ Files may not have uploaded correctly. Go to GitHub and check that 
+  index.html is in the root (main) folder, not inside a subfolder.
+
+"I can't log into admin"
+→ Make sure you clicked the invite link in your email before trying to log in.
+  If expired, go to Netlify → Identity → Invite users again.
+
+"My domain isn't working after 48 hours"
+→ Double-check the nameservers are entered exactly as Netlify gave them.
+  Contact your domain registrar's support — they can verify it's set up right.
+
+"Images aren't showing up"
+→ The file path matters. Images must be in assets/images/ and referenced 
+  correctly in your HTML.
+
+"I want to change something but don't know how"
+→ Most visual changes are possible through the admin panel.
+  For structural changes (layout, colors, fonts), a developer can help —
+  or feel free to ask Claude for guidance.
+
+---
+
+## YOU'RE ALL SET
+
+Your website structure:
+  ✅ Homepage with live clock, animations, all sections
+  ✅ App page for One Good Thing (ready for screenshots when you have them)
+  ✅ 7 Day Detox page with all 7 days structured (add content through admin)
+  ✅ Journal/Blog page (write posts through your admin dashboard)
+  ✅ Community waitlist page
+  ✅ CMS admin panel at /admin
+  ✅ All pages linked together
+  ✅ Mobile responsive on all pages
+  ✅ Ready for your domain
+
+Questions? The Doan & Co setup is intentionally simple. If anything 
+feels confusing, each step has an entire support community around it —
+just search "Netlify [the thing you're stuck on]" and you'll find guides.
+
+Good luck, Micah. This is going to be great.
+
+— Built with care by Claude for Doan & Co

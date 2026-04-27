@@ -1,0 +1,15 @@
+# Netlify configuration for Doan & Co
+# This file tells Netlify how to serve your site
+
+[build]
+  publish = "."
+
+# Custom 404 page
+[[redirects]]
+  from = "/*"
+  to = "/404.html"
+  status = 404
+
+# Enable Netlify Identity for CMS login
+[build.environment]
+  NODE_VERSION = "18"
