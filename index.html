@@ -665,6 +665,8 @@
   },{threshold:.3}).observe(document.querySelector('.photo-break'));
 
     // ── OPENING BREATH SCREEN ──
+  // Uses sessionStorage so it only shows once per browser session.
+  // Clears when the tab is closed — returning visitors see it fresh next visit.
   (function(){
     const screen     = document.getElementById('breathOpening');
     const phase      = document.getElementById('breathePhase');
@@ -673,6 +675,14 @@
     const circleWrap = document.getElementById('breatheWrap');
     if(!screen||!phase) return;
 
+    // If already seen this session — hide immediately and unlock scroll
+    if(sessionStorage.getItem('breathSeen')){
+      screen.style.display = 'none';
+      document.body.style.overflow = '';
+      return;
+    }
+
+    // First visit this session — show the screen
     document.body.style.overflow = 'hidden';
     setTimeout(()=>{ circleWrap.style.opacity='1'; }, 1400);
     setTimeout(()=>{ if(noteEl) noteEl.classList.add('note-visible'); }, 1800);
@@ -716,6 +726,8 @@
 
     window.dismissBreath = function(){
       if(breathTimer) clearTimeout(breathTimer);
+      // Mark as seen for the rest of this session
+      sessionStorage.setItem('breathSeen', '1');
       screen.classList.add('dismissed');
       document.body.style.overflow = '';
       setTimeout(()=>{ screen.style.display='none'; }, 1500);
